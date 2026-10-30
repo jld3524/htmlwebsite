@@ -1,0 +1,259 @@
+/* Grundlegende Einstellungen */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f6f8;
+}
+
+/* Header-Bereich linksbündig gestapelt */
+.header-left {
+    background-color: #f2f2f5;
+    padding: 24px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.header-left h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.header-left p {
+    margin: 0;
+    color: #7f8c8d;
+}
+
+/* Filter-Zeile */
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.filter-box label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+.filter-box select {
+    padding: 6px 12px;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+/* Raster-Layout für die Set-Karten */
+.sets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* Einzelne Set-Karten-Design */
+.set {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.set > img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+}
+
+.set h2 {
+    font-size: 1.05rem;
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+}
+
+/* Schlüssel-Wert-Paare (Definitionsliste) */
+.set dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 12px;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.set dt {
+    font-weight: bold;
+    color: #100;
+}
+
+.set dd {
+    margin-left: 0;
+    color: #333;
+}
+
+/* Richtet die Inhalte in der Karte so aus, dass der Button unten bündig bleibt */
+.set {
+    justify-content: space-between; 
+}
+
+/* Button-Styling */
+.set-link {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Hover-Effekt (beim Drüberfahren mit der Maus) */
+.set-link:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+/* Falls du Option 2 nutzt: Entfernt die Standard-Unterstreichung bei Links in Überschriften */
+.set h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.set h2 a:hover {
+    color: #3498db;
+}
+
+/* Erlaubt das Vergrößern der Bilder, ohne dass sie aus der Karte herausragen */
+.set {
+    overflow: hidden; /* Schneidet überstehende Zoom-Ränder ab */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Karten-Hover: Die gesamte Karte hebt sich leicht an */
+.set:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Bild-Hover: Bild zoomt sanft rein */
+.set img {
+    transition: transform 0.4s ease;
+}
+
+.set:hover img {
+    transform: scale(1.08);
+}
+
+/* Button Styling */
+.theme-btn {
+    background: #f0f0f0;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.08);
+}
+
+/* Dark Mode Farbschema */
+body.dark-mode {
+    background-color: #1a1a24;
+    color: #e0e0e0;
+}
+
+body.dark-mode .header-left,
+body.dark-mode .set {
+    background-color: #242533;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .header-left h1,
+body.dark-mode .set h2,
+body.dark-mode .filter-box label,
+body.dark-mode .set dd {
+    color: #ffffff;
+}
+
+body.dark-mode .header-left p,
+body.dark-mode .set dt {
+    color: #a0a5b5;
+}
+
+body.dark-mode select,
+body.dark-mode .theme-btn {
+    background-color: #2f3042;
+    color: #fff;
+    border-color: #44465e;
+}
+
+/* Lightbox / Modal für einfache Großansicht */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Schließen-Button (oben rechts) */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #e74c3c;
+}
+
+/* Das vergrößerte Bild */
+#modal-img {
+    width: 80vw;             
+    max-width: 900px;        
+    height: auto;            
+    max-height: 80vh;        
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    animation: popIn 0.25s ease-out;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
